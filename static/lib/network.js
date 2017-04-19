@@ -2,7 +2,8 @@
 
 
 // var newHost = "http://www.yeliemin.com:8106";
-var newHost = "http://localhost:8106";
+// var newHost = "http://localhost:9106";
+var newHost = "http://dev.gewuit.com:9106";
 
 /**
  * 新的接口get请求
@@ -11,6 +12,7 @@ var newHost = "http://localhost:8106";
  * @param error
  */
 function getJson(url,data,success,error) {
+    console.log(newHost+url);
     $.ajax({
         type:"get",
         data:data,

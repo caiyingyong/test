@@ -8,8 +8,8 @@
 // for.development
 module.exports = {
     host: '122.40.212.3',
-    user: 'bdm238721332',
-    password:'1320795165ye',
+    user: 'caiyong',
+    password:'caiyong',
     database: 'test',
     charset: 'UTF8_GENERAL_CI',
     timezone: '+8:00'

@@ -10,6 +10,6 @@ module.exports = {
         expires: 200 * 60 * 1000 //单位为毫秒
     },
     host: 'localhost',
-    port: '8106',
+    port: '9106',
     salt: 'test'
 };
