@@ -13,19 +13,6 @@ let cookieParser = require('cookie-parser');
 let filter = require('./lib/middleware/session').filter;
 let busboy = require('connect-busboy');
 let bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(busboy());
-app.use(cookieParser());
-app.use(filter);
-
-
-/**
- * routes
- */
-let routes = require('./routes/index');
-
-
 
 app.use('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -40,8 +27,19 @@ app.use('*', function (req, res, next) {
     }
 });
 
-app.use('/',routes);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(busboy());
+app.use(cookieParser());
+app.use(filter);
 
+
+/**
+ * routes
+ */
+let routes = require('./routes/index');
+
+app.use('/',routes);
 
 // webhook
 app.post('/webhook', function (req, res) {
