@@ -18,5 +18,12 @@ router.get("/ceshi",function (req, res, next) {
     })
 });
 
+router.get("/caiyong",function (req, res, next) {
+    res.json({
+        success:true,
+        error:null
+    })
+});
+
 
 module.exports = router;
