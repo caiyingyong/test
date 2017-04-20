@@ -6,19 +6,15 @@
 let router = require('express').Router();
 
 
-router.get('/',function (req,res,next) {
-    console.log('index page');
-    res.redirect('./index.html');
-});
-
-router.get("/ceshi",function (req, res, next) {
-    res.json({
-        success:true,
-        error:null
+router.
+    get('/',function (req,res,next) {
+        console.log('index page');
+        res.redirect('./index.html');
     })
-});
-
-router.get("/caiyong",function (req, res, next) {
+/**
+ * 测试
+ */
+    .get("/ceshi",function (req, res, next) {
     res.json({
         success:true,
         error:null
