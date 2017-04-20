@@ -11,15 +11,14 @@ let generateMd5 = require('../lib/md5').generateMd5;
 let session = require('../lib/middleware/session');
 
 
-router.
-get('/',function (req,res,next) {
+router.get('/',function (req,res,next) {
     console.log('index page');
     res.redirect('./index.html');
 })
 /**
 * 测试
 */
-.get("/ceshi",function (req, res, next) {
+router.get("/ceshi",function (req, res, next) {
     res.json({
         success:true,
         error:null
@@ -28,7 +27,7 @@ get('/',function (req,res,next) {
 /**
  * 注册
  */
-.post('/register',function (req, res, next) {
+router.post('/register',function (req, res, next) {
     logger.info('/register');
     logger.info('注册');
 
