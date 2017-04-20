@@ -1,5 +1,6 @@
 /**
  * Created by lenovo on 2017/4/18.
+ * 登录注册
  */
 "use strict";
 
@@ -32,7 +33,10 @@ router.post('/register',function (req, res, next) {
     logger.info('注册');
 
     if (!req.body.account || !req.body.password) {
-        throw error.informationLoss;
+        throw res.json({
+            success:false,
+            error:"无帐号或密码"
+        });
     }
     return DB.User.findAll({
         where: {
