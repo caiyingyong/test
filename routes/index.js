@@ -23,7 +23,7 @@ router.get("/ceshi",function (req, res, next) {
         success:true,
         error:null
     })
-})
+});
 /**
  * 注册
  */
@@ -31,34 +31,34 @@ router.post('/register',function (req, res, next) {
     logger.info('/register');
     logger.info('注册');
 
-    if(!req.body.account || !req.body.password){
+    if (!req.body.account || !req.body.password) {
         throw error.informationLoss;
     }
     return DB.User.findAll({
-        where:{
-            account:req.body.account
+        where: {
+            account: req.body.account
         }
-    })
-}).then(function (_users) {
-    if(_users.length > 0){
-        throw error.userAlreadyExist;
-    }
-    let newUser = {
-        account:req.body.account,
-        password:generateMd5(req.body.password),
-        registerTime:new Date()
-    };
-    return DB.User.create(newUser);
-}).then(function (_newUser) {
-    res.json({
-        success:true,
-        error:null,
-        newUser:_newUser
-    });
-}).catch(function (_err) {
-    res.json({
-        success:false,
-        error:_err
+    }).then(function (_users) {
+        if (_users.length > 0) {
+            throw error.userAlreadyExist;
+        }
+        let newUser = {
+            account: req.body.account,
+            password: generateMd5(req.body.password),
+            registerTime: new Date()
+        };
+        return DB.User.create(newUser);
+    }).then(function (_newUser) {
+        res.json({
+            success: true,
+            error: null,
+            newUser: _newUser
+        });
+    }).catch(function (_err) {
+        res.json({
+            success: false,
+            error: _err
+        });
     });
 });
 
