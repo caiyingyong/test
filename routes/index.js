@@ -65,5 +65,38 @@ router.post('/register',function (req, res, next) {
     });
 });
 
+/**
+ * 登录
+ */
+router.post('login',function (req, res, next) {
+
+    if(!req.body.account || !req.body.password){
+        throw error.informationLoss;
+    }
+    return DB.User.findOne({
+        where:{
+            account:req.body.account,
+            password:generateMd5(req.body.password)
+        }
+    }).then(function (_user) {
+        if(!_user){
+            throw error.userNotFound;
+        }
+        let token = session.newToken(req,{ID:_user.ID});
+
+        res.json({
+            success:true,
+            error:null,
+            user:_user,
+            token:token
+        });
+    }).then(function (_err) {
+        res.json({
+            success:false,
+            error:_err
+        })
+    })
+});
+
 
 module.exports = router;
