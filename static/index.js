@@ -17,9 +17,9 @@ $('#register').click(function () {
     postJson('/register',option,function (res) {
         console.log(res);
         if(res.success){
-
+            console.log('注册成功')
         }else {
-            alert('注册失败');
+            console.log('注册失败');
         }
     })
 });

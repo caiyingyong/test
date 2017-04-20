@@ -33,10 +33,8 @@ router.post('/register',function (req, res, next) {
     logger.info('注册');
 
     if (!req.body.account || !req.body.password) {
-        throw res.json({
-            success:false,
-            error:"无帐号或密码"
-        });
+        //无帐号和密码
+        throw error.informationLoss;
     }
     return DB.User.findAll({
         where: {
@@ -44,6 +42,7 @@ router.post('/register',function (req, res, next) {
         }
     }).then(function (_users) {
         if (_users.length > 0) {
+            //用户已经存在
             throw error.userAlreadyExist;
         }
         let newUser = {
